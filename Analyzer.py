@@ -1,7 +1,10 @@
 """
     Module::  Analyzer.py
-    Author::  Federico Ambrogi, federico.ambrogi88@gmail.com
-    Summary:: This script analyses the root file produced by Fittino
+    Author::  Federico Ambrogi, federico.ambrogi@univie.ac.at
+    Summary:: This script analyses the root file produced by Fittino-ScyNet
+              and converts it into a numpy dictionary.
+
+              At the bottom, the list of branches in the root file can be consulted.
 """
 
 import os,sys
@@ -23,6 +26,8 @@ Branches = Tree.GetListOfBranches()
 print '*** List of available branches : *** '
 for B in Branches:
     print B
+
+
 
 '''
 Chi2_8TeV_Scy = Tree.GetBranch('SCYNet_Chi2_8TeV')
@@ -120,6 +125,89 @@ for P in range(Num_Points):
 np.save('ScyNet_Res', Dic)
 
 
+
+
+
+
+'''
+*** List of available branches : ***
+<ROOT.TBranch object ("Minput") at 0x1df4fb0>
+<ROOT.TBranch object ("M1") at 0x1e02ca0>
+<ROOT.TBranch object ("M2") at 0x1e03800>
+<ROOT.TBranch object ("M3") at 0x1e04360>
+<ROOT.TBranch object ("MQ1") at 0x1e04ec0>
+<ROOT.TBranch object ("MQ3") at 0x1e05a20>
+<ROOT.TBranch object ("ML1") at 0x1e06580>
+<ROOT.TBranch object ("ML3") at 0x1e070e0>
+<ROOT.TBranch object ("MA0") at 0x1e07c40>
+<ROOT.TBranch object ("A") at 0x1e087a0>
+<ROOT.TBranch object ("Mu") at 0x1e09300>
+<ROOT.TBranch object ("TanBeta") at 0x1e09e60>
+<ROOT.TBranch object ("Mt") at 0x1e0a9c0>
+<ROOT.TBranch object ("Bound_M3") at 0x1e0b520>
+<ROOT.TBranch object ("Bound_Mu") at 0x1e0c080>
+<ROOT.TBranch object ("SPheno_Mass_Wp") at 0x1e0cbe0>
+<ROOT.TBranch object ("SPheno_Mass_Z0") at 0x1e0d740>
+<ROOT.TBranch object ("SPheno_Mass_t") at 0x1e0e2d0>
+<ROOT.TBranch object ("SPheno_GammaTotal_t") at 0x1e0ee50>
+<ROOT.TBranch object ("SPheno_BR_t_to_b_Wp") at 0x1e0fa40>
+<ROOT.TBranch object ("SPheno_BR_t_to_b_Hp") at 0x1e10630>
+<ROOT.TBranch object ("SPheno_Mass_h0") at 0x1e11220>
+<ROOT.TBranch object ("SPheno_GammaTotal_h0") at 0x1e11db0>
+<ROOT.TBranch object ("SPheno_Mass_H0") at 0x1e129a0>
+<ROOT.TBranch object ("SPheno_GammaTotal_H0") at 0x1e13530>
+<ROOT.TBranch object ("SPheno_Mass_Hp") at 0x1e14120>
+<ROOT.TBranch object ("SPheno_GammaTotal_Hp") at 0x1e14cb0>
+<ROOT.TBranch object ("SPheno_Mass_A0") at 0x1e158a0>
+<ROOT.TBranch object ("SPheno_GammaTotal_A0") at 0x1e16430>
+<ROOT.TBranch object ("SPheno_HMIX_Q") at 0x1e17020>
+<ROOT.TBranch object ("SPheno_HMIX_mu") at 0x1e17ba0>
+<ROOT.TBranch object ("SPheno_HMIX_VEV") at 0x1e18730>
+<ROOT.TBranch object ("SPheno_BR_b_s_gamma") at 0x1e19300>
+<ROOT.TBranch object ("SPheno_BR_Bs_mu_mu") at 0x1e19ef0>
+<ROOT.TBranch object ("SPheno_BR_Bu_tau_nu") at 0x1e1aae0>
+<ROOT.TBranch object ("SPheno_NormSM_BR_Bu_tau_nu") at 0x1e1b6d0>
+<ROOT.TBranch object ("SPheno_Abs_Delta_Mass_Bd") at 0x1e1c2c0>
+<ROOT.TBranch object ("SPheno_Abs_Delta_Mass_Bs") at 0x1e1ceb0>
+<ROOT.TBranch object ("SPheno_DiffSM_amu") at 0x1e1daa0>
+<ROOT.TBranch object ("SPheno_Mass_~dL") at 0x1e1e690>
+<ROOT.TBranch object ("SPheno_GammaTotal_~dL") at 0x1e1f260>
+<ROOT.TBranch object ("SPheno_Mass_~uL") at 0x1e1fe50>
+<ROOT.TBranch object ("SPheno_GammaTotal_~uL") at 0x1e20a20>
+<ROOT.TBranch object ("SPheno_Mass_~sL") at 0x1e21610>
+<ROOT.TBranch object ("SPheno_GammaTotal_~sL") at 0x1e221e0>
+<ROOT.TBranch object ("SPheno_Mass_~cL") at 0x1e22dd0>
+<ROOT.TBranch object ("SPheno_GammaTotal_~cL") at 0x1e239a0>
+<ROOT.TBranch object ("SPheno_Mass_~b1") at 0x1e24590>
+<ROOT.TBranch object ("SPheno_GammaTotal_~b1") at 0x1e25160>
+<ROOT.TBranch object ("SPheno_Mass_~t1") at 0x1e25d50>
+<ROOT.TBranch object ("SPheno_GammaTotal_~t1") at 0x1e26920>
+<ROOT.TBranch object ("SPheno_Mass_~eL") at 0x1e27510>
+<ROOT.TBranch object ("SPheno_GammaTotal_~eL") at 0x1e280e0>
+<ROOT.TBranch object ("SPheno_Mass_~nueL") at 0x1e28cd0>
+<ROOT.TBranch object ("SPheno_GammaTotal_~nueL") at 0x1e298c0>
+<ROOT.TBranch object ("SPheno_Mass_~muL") at 0x1e2a4b0>
+<ROOT.TBranch object ("SPheno_GammaTotal_~muL") at 0x1e2b0a0>
+<ROOT.TBranch object ("SPheno_Mass_~numuL") at 0x1e2bc90>
+<ROOT.TBranch object ("SPheno_GammaTotal_~numuL") at 0x1e2c880>
+<ROOT.TBranch object ("SPheno_Mass_~tau1") at 0x1e2d470>
+<ROOT.TBranch object ("SPheno_GammaTotal_~tau1") at 0x1e2e060>
+<ROOT.TBranch object ("SPheno_Mass_~nutauL") at 0x1e2ec50>
+<ROOT.TBranch object ("SPheno_GammaTotal_~nutauL") at 0x1e2f840>
+<ROOT.TBranch object ("SPheno_Mass_~dR") at 0x1e30430>
+<ROOT.TBranch object ("SPheno_GammaTotal_~dR") at 0x1e31000>
+<ROOT.TBranch object ("SPheno_Mass_~uR") at 0x1e31bf0>
+<ROOT.TBranch object ("SPheno_GammaTotal_~uR") at 0x1e327c0>
+<ROOT.TBranch object ("SPheno_Mass_~sR") at 0x1e333b0>
+<ROOT.TBranch object ("SPheno_GammaTotal_~sR") at 0x1e33f80>
+<ROOT.TBranch object ("SPheno_Mass_~cR") at 0x1e34b70>
+<ROOT.TBranch object ("SPheno_GammaTotal_~cR") at 0x1e35740>
+<ROOT.TBranch object ("SPheno_Mass_~b2") at 0x1e36330>
+<ROOT.TBranch object ("SPheno_GammaTotal_~b2") at 0x1e36f00>
+<ROOT.TBranch object ("Sject ("SPheno_BR_~g_to_~t2bar_t") at 0x1e66c40>
+<ROOT.TBranch object ("SPheno_BR_~g_to_~uLbar_u") at 0x1e67830>
+<ROOT.TBranch object ("SPheno_BR_~g_to_~uRbar_u
+'''
 
 
 

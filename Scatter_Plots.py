@@ -1,3 +1,11 @@
+B"""
+   Author: Ambrogi Federico
+           federico.ambrogi@univie.ac.at
+
+   Module for analysing the output root files
+   and plotting the weights of the missing TxNames or missing models 
+"""
+
 import os,sys
 import matplotlib
 matplotlib.use('Agg')
@@ -9,10 +17,26 @@ from matplotlib.colors import LogNorm
 import argparse
 import numpy as np
 
+from Extract_Info_Plotting import *
 
+
+'''
 """ Selects the results based on SModelS minimum rValue """
-def Select_Results(min_r = 100, max_r = 1000, min_chi = 100, debug= False):
-    RESULTS = np.load('ScyNet_Res.npy').item()
+
+
+def Select_Results(results = 'Numpy/ScyNet_Res.py', 'min_r = 100, max_r = 1000, min_chi = 100, debug= False):
+""" Selects the results based:
+
+    Args:
+         results: numpy files, converted from the root file, by the script 
+    min SModelS r_value
+    max SModelS r_value
+    min ScyNet chi2
+
+    returns a dictionary with the information of particles masses and values """
+
+
+    RESULTS = np.load(results).item()
     Neu = RESULTS['Neu1']
     Slep = RESULTS['Slep']
     Neu2 = RESULTS['Neu2']
@@ -49,11 +73,14 @@ def Select_Results(min_r = 100, max_r = 1000, min_chi = 100, debug= False):
         NEU2.append(Neu[num])
         XI2.append(xi2[num])
     return NEU,SLEP,NEU2,CH1,GLU,SQ,R,XI2
+'''
 
 min_r = 0.9
-min_r = 
+min_chi = 40
+max_r = 50
+max_chi = 200
+NEU,SLEP,NEU2,CH1,GLU,SQ, R,XI2,  MISS_TOPO_BRA,MISS_TOPO_TX,MISS_TOPO_W, MISS_CON_BRA,MISS_CON_W,dic = Select_Results(min_r = min_r, min_xi = min_chi, max_r = max_r, max_xi = max_chi, debug= True)
 
-NEU,SLEP,NEU2,CH1,GLU,SQ,R, XI2 = Select_Results(min_r = min_r, min_chi = min_chi, debug= True)
 
 def Plane_Prop(plane):
     Max_Neu = 400
@@ -87,19 +114,6 @@ def Plane_Prop(plane):
     elif  plane == 'Sq_Neu':
         return Sq_Neu, SQ, NEU, R , XI2
 
-
-
-""" Some Pretty Labels """
-
-
-
-Glu_M     = r'$m_{\tilde g}$ [GeV]'                                                                                                                                           
-Neu_M     = r'$m_{\tilde{\chi}_1 ^0 }$ [GeV]'                                                                                                                                
-Ch1_M     = r'$m_{\tilde \chi_1 ^{\pm} }$ [GeV]'                                                                                                                              
-Sq_M      = 'min(' + r'$ m_{\tilde q }$) [GeV]'
-Slep_M    = r'$m_{\tilde l }$ [GeV]'                                                                                                                               
-rValue    = r'SModelS $r =\frac{\sigma_{Theo}}{\sigma_{UL}}$'                                                                                                            
-ScyXi2    = r'ScyNet $\chi ^2$'
 
 def Color_Bar(plt , size = '' , bins = '' , title = '' ):
     cbar = plt.colorbar() 

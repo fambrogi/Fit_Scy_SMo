@@ -1,0 +1,17 @@
+Author: Federico Ambrogi, federico.ambrogi@univie.ac.at
+
+Main workflow of the analysis
+
+1) *************************************
+The module Analyser.py converts and extract the information fromm the root file, produced
+as output by Fittino-ScyNet, into a dictionary that is called ScyNet_Res.py 
+
+The  numpy file contains information about the masses of sparticles, 
+plus the SModelS rvalue, and ScyNet chi2
+
+This file is the input of the various scripts for the analysis of the results.
+
+All the numpy files are stores inside the Numpys directory.
+
+
+2) *************************************

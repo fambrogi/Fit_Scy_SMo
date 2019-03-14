@@ -1,0 +1,103 @@
+<SAFheader>
+</SAFheader>
+
+<InitialCounter>
+"Initial number of events"      #
+70980           0               # nentries
+7.098000e+04    0.000000e+00    # sum of weights
+7.098000e+04    0.000000e+00    # sum of weights^2
+</InitialCounter>
+
+<Counter>
+"MET > 160"                     # 1st cut
+34691           0               # nentries
+3.469100e+04    0.000000e+00    # sum of weights
+3.469100e+04    0.000000e+00    # sum of weights^2
+</Counter>
+
+<Counter>
+"NJets > 1"                     # 2st cut
+20599           0               # nentries
+2.059900e+04    0.000000e+00    # sum of weights
+2.059900e+04    0.000000e+00    # sum of weights^2
+</Counter>
+
+<Counter>
+"Nleptons = 0"                  # 3st cut
+19869           0               # nentries
+1.986900e+04    0.000000e+00    # sum of weights
+1.986900e+04    0.000000e+00    # sum of weights^2
+</Counter>
+
+<Counter>
+"PTJet1(4jt) > 130"             # 4st cut
+1401            0               # nentries
+1.401000e+03    0.000000e+00    # sum of weights
+1.401000e+03    0.000000e+00    # sum of weights^2
+</Counter>
+
+<Counter>
+"PTJet2(4jt) > 60"              # 5st cut
+1361            0               # nentries
+1.361000e+03    0.000000e+00    # sum of weights
+1.361000e+03    0.000000e+00    # sum of weights^2
+</Counter>
+
+<Counter>
+"PTJet3(4jt) > 60"              # 6st cut
+1093            0               # nentries
+1.093000e+03    0.000000e+00    # sum of weights
+1.093000e+03    0.000000e+00    # sum of weights^2
+</Counter>
+
+<Counter>
+"PTJet4(4jt) > 60"              # 7st cut
+535             0               # nentries
+5.350000e+02    0.000000e+00    # sum of weights
+5.350000e+02    0.000000e+00    # sum of weights^2
+</Counter>
+
+<Counter>
+"dPhi(J1,MET)(4jt) > 0.4"       # 8st cut
+532             0               # nentries
+5.320000e+02    0.000000e+00    # sum of weights
+5.320000e+02    0.000000e+00    # sum of weights^2
+</Counter>
+
+<Counter>
+"dPhi(J2,MET)(4jt) > 0.4"       # 9st cut
+507             0               # nentries
+5.070000e+02    0.000000e+00    # sum of weights
+5.070000e+02    0.000000e+00    # sum of weights^2
+</Counter>
+
+<Counter>
+"dPhi(J3,MET)(4jt) > 0.4"       # 10st cut
+466             0               # nentries
+4.660000e+02    0.000000e+00    # sum of weights
+4.660000e+02    0.000000e+00    # sum of weights^2
+</Counter>
+
+<Counter>
+"dPhi(J4,MET)(4jt) > 0.2"       # 11st cut
+448             0               # nentries
+4.480000e+02    0.000000e+00    # sum of weights
+4.480000e+02    0.000000e+00    # sum of weights^2
+</Counter>
+
+<Counter>
+"MET/meff > 0.25"               # 12st cut
+421             0               # nentries
+4.210000e+02    0.000000e+00    # sum of weights
+4.210000e+02    0.000000e+00    # sum of weights^2
+</Counter>
+
+<Counter>
+"meff4j > 2200"                 # 13st cut
+4               0               # nentries
+4.000000e+00    0.000000e+00    # sum of weights
+4.000000e+00    0.000000e+00    # sum of weights^2
+</Counter>
+
+<SAFfooter>
+</SAFfooter>
