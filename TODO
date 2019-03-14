@@ -1,0 +1,4 @@
+module add root/5.34.10
+module add anaconda2/2.4.0
+
+..

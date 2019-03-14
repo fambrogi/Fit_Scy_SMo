@@ -1,0 +1,54 @@
+*** 
+List of branches in the root file
+
+In [1]: import os,sys
+
+In [2]: import ROOT as ROOT 
+
+In [3]: import numpy as np
+
+In [4]: 
+
+In [4]: Input = 'Trees/Fittino_431_part.root'  ### Select the input file
+
+In [5]: 
+
+In [5]: """ Loading the input file """
+Out[5]: ' Loading the input file '
+
+In [6]: 
+
+In [6]: c = ROOT.TChain('Tree')
+
+In [7]: c.Add("Trees/Fittino_431_part.root")
+Out[7]: 1
+
+In [9]: Tree = File.Get('Tree')
+
+In [10]: 
+
+In [10]: Num_Points = Tree.GetEntries()
+
+In [11]: Branches = Tree.GetListOfBranches()
+
+In [12]: print '*** List of available branches : *** '
+*** List of available branches : *** 
+
+In [13]: for B in Branches:
+   ....:         print B
+
+
+
+<ROOT.TBranch object ("SModelSCalculator_UnusedModel_0_Weight") at 0x3cde4d0>
+<ROOT.TBranch object ("SModelSCalculator_RValue") at 0x3cdc0d0>
+
+# Missing topologies with TxName associated
+<ROOT.TBranch object ("SModelSCalculator_UnusedModel_0_Weight") at 0x3cde4d0>
+<ROOT.TBranchElement object ("SModelSCalculator_UnusedModel_0_Bracket") at 0x3d40760>
+<ROOT.TBranchElement object ("SModelSCalculator_UnusedModel_0_TxName") at 0x3d41530>
+
+# Misisng topologies without TxName
+<ROOT.TBranch object ("SModelSCalculator_MissingConstraint_0_Weight") at 0x3cf5310>
+<ROOT.TBranchElement object ("SModelSCalculator_MissingConstraint_0_Bracket") at 0x3d51ba0>
+
+<ROOT.TBranch object ("SModelSCalculator_ConstraintOutsideGrid_0_Weight") at 0x3cfcc50>
