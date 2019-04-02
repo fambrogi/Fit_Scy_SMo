@@ -1,0 +1,49 @@
+***
+Content of the ScyNet_Res.npy file
+
+to load:
+
+import numpy as np
+a = np.load('ScyNet_Res.npy').item()
+a.keys()
+
+It will load a dictionary with keys:
+
+dict_keys(['Ch2', 'Miss_Topo_Tx', 'Glu', 'Slep', 'Miss_Topo_Bra', 
+'Miss_Con_W', 'ScyChi2', 'Neu1', 'Miss_Con_Bra', 'Sq', 'rValue', 
+'Neu2', 'Ch1', 'Miss_Topo_W'])
+
+
+Explanation of the keys:
+*** 'Miss_Topo_Bra' : list of entries like "[[[]],[[]]],[[sneutrino,N],[sneutrino,N]]" 
+i.e. the list of "best" missing topology for each point in bracket notation
+
+*** 'Miss_Topo_Tx' : list of entries like " 'TChiChipmZoff_Woff_'"
+i.e. missing topo for models which have their txNamed defined
+
+*** 'Miss_Con_Bra':  list of entries like "[[[jet,jet]],[[l,nu]]]" of
+missing topologies without txname defined 
+
+The other key ending eith "_W" refer to the weights in [fb] of the corresponding missing topology 
+
+Example:
+
+
+In [25]: t = a['Miss_Topo_Tx']
+
+In [26]: tb = a['Miss_Topo_Bra']
+
+In [27]: c = a['Miss_Con_Bra']
+
+In [28]: len(t)
+Out[28]: 32500
+
+In [29]: len(tb)
+Out[29]: 32500
+
+In [30]: len(c)
+Out[30]: 32500
+
+In [32]: for T,TB,C in zip(t,tb,c):
+    ...:     print(T, TB, C)
+    ...:     input('next')

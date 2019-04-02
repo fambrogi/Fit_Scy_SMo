@@ -1,0 +1,23 @@
+***
+Content of the ScyNet_Res.npy file
+
+to load:
+
+import numpy as np
+a = np.load('ScyNet_Res.npy').item()
+
+It will load a dictionary with keys:
+
+dict_keys(['Ch2', 'Miss_Topo_Tx', 'Glu', 'Slep', 'Miss_Topo_Bra', 
+'Miss_Con_W', 'ScyChi2', 'Neu1', 'Miss_Con_Bra', 'Sq', 'rValue', 
+'Neu2', 'Ch1', 'Miss_Topo_W'])
+
+
+Explanation of the keys:
+*** 'Miss_Topo_Bra' : list of entries like "[[[]],[[]]],[[sneutrino,N],[sneutrino,N]]" 
+i.e. the list of "best" missing topology for each point in bracket notation
+
+*** 'Miss_Topo_Tx' : list of entries like " 'TChiChipmZoff_Woff_'"
+i.e. missing topo for models which have their txNamed defined
+
+*** 'Miss_Con_Bra'
