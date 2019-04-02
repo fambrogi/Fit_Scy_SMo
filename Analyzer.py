@@ -46,6 +46,7 @@ print 'Total number of points: ', Num_Points
 
 
 Dic = { 'Glu': []  , 'Neu1': [] , 'Neu2': [] , 'Ch1': [] , 'Slep': []  , 'Sq': []  , 'Ch2':[] ,
+        'Sb1': [] , 'St1': [],
         'ScyChi2': [] , 'rValue': [] , 
         'Miss_Topo_Tx': [] , 'Miss_Topo_Bra':[], 'Miss_Con_Bra':[] , 
         'Miss_Topo_W':[], 'Miss_Con_W':[] }
@@ -69,6 +70,10 @@ for P in range(Num_Points):
     MuR    = c.GetLeaf('SPheno_Mass_~muR').GetValue()
 
     Sq     = c.GetLeaf('SPheno_Mass_~dL').GetValue() 
+
+    b      = c.GetLeaf('SPheno_Mass_~b1').GetValue()
+    t      = c.GetLeaf('SPheno_Mass_~t1').GetValue()
+
 
     # SMo rvalues and ScyNet chi2
 
@@ -108,9 +113,12 @@ for P in range(Num_Points):
     Dic['Neu1']     .append(Neu1)
     Dic['Neu2']     .append(Neu2)
     Dic['Ch1']      .append(Ch1)
-    Dic['Ch2']      . append(Ch2)
+    Dic['Ch2']      .append(Ch2)
     Dic['Slep']     .append(EL)
     Dic['Sq']       .append(Sq)
+    Dic['Sb1']      .append(b)
+    Dic['St1']      .append(t)
+
 
 #         'Miss_Topo_Tx': [] , 'Miss_Topo_Bra':[], 'Miss_Con_Bra':[] , }
 
