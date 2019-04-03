@@ -4,7 +4,6 @@ import os,sys
 import matplotlib
 matplotlib.use('Agg')
 from matplotlib  import cm
-from itertools import izip
 from matplotlib import ticker
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
@@ -62,24 +61,31 @@ def Select_Results(results = 'Numpys/ScyNet_Res.npy', min_r='', max_r = '', min_
 
     for num in range(len(Neu)):
 
-      r = rVal[num]
-      xi = xi2[num]
-
-      if r >= min_r and r <= max_r and xi > min_xi and xi < max_xi:
-        SLEP.append(Slep[num])
-        NEU.append(Neu[num])
-        R.append(r)
-        GLU.append(Glu[num])
-        SQ.append(Sq[num])
-        CH1.append(Ch1[num])
-        NEU2.append(Neu[num])
-        XI2.append(xi2[num])
-        MISS_TOPO_BRA.append(Miss_Topo_Bra[num])
-        MISS_TOPO_TX .append(Miss_Topo_Tx[num])
-        MISS_CON_BRA .append(Miss_Con_Bra[num])
-        MISS_TOPO_W  .append(Miss_Topo_W[num])
-        MISS_CON_W   .append(Miss_Con_W[num])
-
+        r = rVal[num]
+        xi = xi2[num]
+  
+        if r >= min_r and r <= max_r and xi > min_xi and xi < max_xi:
+            SLEP.append(Slep[num])
+            NEU.append(Neu[num])
+            R.append(r)
+            GLU.append(Glu[num])
+            SQ.append(Sq[num])
+            CH1.append(Ch1[num])
+            NEU2.append(Neu[num])
+            XI2.append(xi2[num])
+            MISS_TOPO_BRA.append(Miss_Topo_Bra[num])
+            MISS_TOPO_TX .append(Miss_Topo_Tx[num])
+            MISS_CON_BRA .append(Miss_Con_Bra[num])
+            MISS_TOPO_W  .append(Miss_Topo_W[num])
+            MISS_CON_W   .append(Miss_Con_W[num])
+            
+            if (Miss_Con_W[num]  > 5 or Miss_Topo_W[num] > 5):
+                print('bracket, weight', Miss_Con_Bra[num] , Miss_Con_W[num] )
+                
+                print('topo, weight', Miss_Topo_Tx[num] , Miss_Topo_W[num] )
+                input('')
+            
+            
     dic = {'Neu'         : NEU  , 
            'Neu2'        : NEU2 , 
            'Slep'        : SLEP , 
@@ -97,3 +103,4 @@ def Select_Results(results = 'Numpys/ScyNet_Res.npy', min_r='', max_r = '', min_
 
 
 
+NEU,SLEP,NEU2,CH1,GLU,SQ,     R,XI2,  MISS_TOPO_BRA,MISS_TOPO_TX,MISS_TOPO_W, MISS_CON_BRA, MISS_CON_W , dic  = Select_Results(results = 'Numpys/ScyNet_Res.npy', min_r=0, max_r = 10, min_xi = 20, max_xi = 1000, debug = True)
