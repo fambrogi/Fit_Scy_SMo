@@ -1,4 +1,4 @@
-"""
+B"""
     Module::  Analyzer.py
     Author::  Federico Ambrogi, federico.ambrogi@univie.ac.at
     Summary:: This script analyses the root file produced by Fittino-ScyNet
@@ -82,30 +82,38 @@ for P in range(Num_Points):
     ScyChi2 = c.GetLeaf('SCYNet_Chi2_8TeV').GetValue()
 
 
-    
-    # Missing Constraints ************************
-    Miss_Con_W    = c.GetLeaf('SModelSCalculator_MissingConstraint_0_Weight').GetValue()
-    Miss_Con_W_1  = c.GetLeaf('SModelSCalculator_MissingConstraint_1_Weight').GetValue()
-    Miss_Con_W_2  = c.GetLeaf('SModelSCalculator_MissingConstraint_2_Weight').GetValue()
-    Miss_Con_Bra  = str(c.SModelSCalculator_MissingConstraint_0_Bracket)
+    #SModelSCalculator_MissingConstraint_0_Weight = c.SModelSCalculator_MissingConstraint_0_Weight
+    #SModelSCalculator_UnusedModel_0_Bracket      = c.SModelSCalculator_UnusedModel_0_Bracket
+    #SModelSCalculator_UnusedModel_0_TxName       = c.SModelSCalculator_UnusedModel_0_TxName
+    #MissingConstraint_0_Bracket                  = c.SModelSCalculator_MissingConstraint_0_Bracket
 
-    # Unused Models ***************************
-    Unused_Tx  = str(c.SModelSCalculator_UnusedModel_0_TxName)
-    Unused_Bra = str(c.SModelSCalculator_UnusedModel_0_Bracket)
-    Unused_W     = c.GetLeaf('SModelSCalculator_UnusedModel_0_Bracket').GetValue()
-    Unused_W_1   = c.GetLeaf('SModelSCalculator_UnusedModel_1_Bracket').GetValue()
-    Unused_W_2   = c.GetLeaf('SModelSCalculator_UnusedModel_2_Bracket').GetValue()
+    # Missing topo with proper TxName + brackets + weight
+    Miss_Topo_Tx  = str(c.SModelSCalculator_UnusedModel_0_TxName)
+    Miss_Topo_Bra = str(c.SModelSCalculator_UnusedModel_0_Bracket)
 
-    # Our grid ********************************
-    Out_grid    = str(c.SModelSCalculator_ConstraintOutsideGrid_0_Bracket)
-    Out_grid_W  = c.GetLeaf('SModelSCalculator_ConstraintOutsideGrid_0_Weight').GetValue()  
-      
 
-    if ScyChi2 > 80 and rValue < 1:
-        print('Miss Con: bra, w1, w2, w3',  Miss_Con_Bra, Miss_Con_W, Miss_Con_W_1 , Miss_Con_W_2 )
-        print('Unused models tx, brax, w , w1', Unused_Tx , Unused_Bra, Unused_W, Unused_W_1 )
-        print('Outside grid:', Out_grid , ' ' , Out_grid_W)
-        raw_input('check!')
+   
+    Miss_Topo_W   = c.GetLeaf('SModelSCalculator_MissingConstraint_0_Weight').GetValue()
+
+    Miss_Topo_W_1  = c.GetLeaf('SModelSCalculator_MissingConstraint_1_Weight').GetValue()
+    Miss_Topo_W_2  = c.GetLeaf('SModelSCalculator_MissingConstraint_2_Weight').GetValue()
+
+    Miss_Con_W_1   = c.GetLeaf('SModelSCalculator_UnusedModel_1_Bracket').GetValue()
+    Miss_Con_W_2   = c.GetLeaf('SModelSCalculator_UnusedModel_2_Bracket').GetValue()
+
+
+
+
+
+
+    # Miss topo without TxName
+    Miss_Con_Bra  = str(c.SModelSCalculator_MissingConstraint_0_Bracket)  # Miss constraints, i.e. no TxName defined for this topology
+    Miss_Con_W    = c.GetLeaf('SModelSCalculator_UnusedModel_0_Bracket').GetValue()
+
+
+    print('Miss topo weights', Miss_Topo_Tx, Miss_Topo_W , Miss_Topo_W_1, Miss_Topo_W_2 )
+    print('Unused models weights', Miss_Con_Bra, Miss_Con_W, Miss_Con_W_1 , Miss_Con_W_2 , )
+    raw_input('check!')
 
     '''
     print glu, Neu1, Neu2 , EL 
@@ -132,15 +140,13 @@ for P in range(Num_Points):
 
 #         'Miss_Topo_Tx': [] , 'Miss_Topo_Bra':[], 'Miss_Con_Bra':[] , }
 
-    #Dic['Miss_Topo_W']  .append(Miss_Topo_W)
-    #Dic['Miss_Con_W']   .append(Miss_Con_W)
-    #Dic['Miss_Topo_Tx'] .append(Miss_Topo_Tx)
-    #Dic['Miss_Topo_Bra'].append(Miss_Topo_Bra)
-    #Dic['Miss_Con_Bra'] .append(Miss_Con_Bra)
-
+    Dic['Miss_Topo_W']  .append(Miss_Topo_W)
+    Dic['Miss_Con_W']   .append(Miss_Con_W)
     Dic['rValue']       .append(rValue_2)
     Dic['ScyChi2']      .append(ScyChi2)
-
+    Dic['Miss_Topo_Tx'] .append(Miss_Topo_Tx)
+    Dic['Miss_Topo_Bra'].append(Miss_Topo_Bra)
+    Dic['Miss_Con_Bra'] .append(Miss_Con_Bra)
 
 np.save('ScyNet_Res', Dic)
 
@@ -388,7 +394,6 @@ np.save('ScyNet_Res', Dic)
 <ROOT.TBranch object ("SModelSCalculator_MissingConstraint_7_Weight") at 0x2d93c60>
 <ROOT.TBranch object ("SModelSCalculator_MissingConstraint_8_Weight") at 0x2d94880>
 <ROOT.TBranch object ("SModelSCalculator_MissingConstraint_9_Weight") at 0x2d954a0>
-
 <ROOT.TBranch object ("SModelSCalculator_ConstraintOutsideGrid_0_Weight") at 0x2d960c0>
 <ROOT.TBranch object ("SModelSCalculator_ConstraintOutsideGrid_1_Weight") at 0x2d96d10>
 <ROOT.TBranch object ("SModelSCalculator_ConstraintOutsideGrid_2_Weight") at 0x2d97960>
@@ -444,15 +449,4 @@ np.save('ScyNet_Res', Dic)
 <ROOT.TBranchElement object ("SModelSCalculator_ConstraintOutsideGrid_1_Bracket") at 0x2df4830>
 <ROOT.TBranchElement object ("SModelSCalculator_ConstraintOutsideGrid_2_Bracket") at 0x2df5630>
 <ROOT.TBranchElement object ("SModelSCalculator_ConstraintOutsideGrid_3_Bracket") at 0x2df63d0>
-<ROOT.TBranchElement object ("SModelSCalculator_ConstraintOutsideGrid_4_Bracket") at 0x2df7230>
-<ROOT.TBranchElement object ("SModelSCalculator_ConstraintOutsideGrid_5_Bracket") at 0x2df8030>
-<ROOT.TBranchElement object ("SModelSCalculator_ConstraintOutsideGrid_6_Bracket") at 0x2df8e30>
-<ROOT.TBranchElement object ("SModelSCalculator_ConstraintOutsideGrid_7_Bracket") at 0x2df9c30>
-<ROOT.TBranchElement object ("SModelSCalculator_ConstraintOutsideGrid_8_Bracket") at 0x2dfaa30>
-<ROOT.TBranchElement object ("SModelSCalculator_ConstraintOutsideGrid_9_Bracket") at 0x2dfb830>
-<ROOT.TBranchElement object ("Error") at 0x2dfc630>
-<ROOT.TBranchElement object ("Terminator") at 0x2dfd340>
-<ROOT.TBranch object ("Chi2") at 0x2dfe050>
-<ROOT.TBranch object ("IterationCounter") at 0x2dfeb90>
-<ROOT.TBranch object ("PointAccepted") at 0x2dff780>
-'''
+<ROOT.TBranchElement object ("SModelSCalculator_ConstraintOutsideGrid_4_Br
