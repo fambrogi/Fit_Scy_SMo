@@ -1,4 +1,4 @@
-B""" Module for plotting the masses distributions of the points 
+""" Module for plotting the masses distributions of the points 
     (no analysis on rvalues 
     
     To do: implement masses differences in the results file for easyness?
@@ -38,7 +38,7 @@ keys = dic.keys()
 
 diff_N2_N1 = []
 for n1,n2 in zip(N1,N2):
-    diff_N2_N1.append(n2-n1)
+    diff_N2_N1.append(abs(n2)-abs(n1))
     
 diff_C_N1 = []
 for c,n in zip(C,N1):
@@ -56,13 +56,13 @@ fill = True
 alpha = 0.5
 
 
-'''
 # COLORED
 plt.text(2100,2800, 'All Scanned Points' , fontsize = fnt_size)
 plt.hist(Q, bins = bins , histtype = histtype, fill = fill,  color = 'orange'     , label = r'$m_{\tilde q}$'   , alpha = alpha+0.2 , edgecolor = 'orange' )
 plt.hist(T, bins = bins , histtype = histtype, fill = fill,  color = 'blue'       , label = r'$m_{\tilde t_1}$' , alpha = alpha+0.2 , edgecolor = 'navy'   )
 plt.hist(B, bins = bins , histtype = histtype, fill = fill,  color = 'cyan'       , label = r'$m_{\tilde b_1}$' , alpha = alpha     , edgecolor = 'cyan')
 plt.hist(G, bins = bins , histtype = histtype, fill = fill,  color = 'red'        , label = r'$m_{\tilde g}$'   , alpha = alpha     , edgecolor = 'red')
+plt.grid(color = 'lightgray' , linestyle = ':')
 
 plt.legend(loc = 'upper right' , fontsize = fnt_size -2 , ncol = 2)
 
@@ -79,7 +79,7 @@ plt.hist(N1, bins = bins , histtype = histtype, fill = fill,  color = 'lightgray
 plt.hist(N2, bins = bins , histtype = histtype, fill = fill,  color = 'pink'       , label = r'$m_{\tilde \chi _2 ^{0}} $'       , alpha = alpha+0.2 , edgecolor = 'magenta'   )
 plt.hist(C,  bins = bins , histtype = histtype, fill = fill,  color = 'mediumslateblue', label = r'$m_{\tilde \chi _1 ^{\pm}} $' , alpha = alpha     , edgecolor = 'blue')
 plt.hist(SL, bins = bins , histtype = histtype, fill = fill,  color = 'dodgerblue' , label = r'$m_{\tilde l}$'                   , alpha = alpha     , edgecolor = 'navy')
-
+plt.grid(color = 'lightgray' , linestyle = ':')
 plt.legend(loc = 'upper right' , fontsize = fnt_size -2 , ncol = 2)
 
 plt.xlabel('Mass [GeV]', fontsize = fnt_size)
@@ -89,7 +89,7 @@ plt.axis([0,700,0,4000])
 plt.savefig('PLOTS/Masses/EW.png' , bbox_inches='tight' , dpi = 200)
 plt.close()
 
-'''
+
 
 # Differences
 
@@ -104,8 +104,8 @@ cbar.set_label(r'$m_{\tilde \chi _2 ^{0}}   - m_{\tilde \chi _1 ^{\pm}}   $   [G
 #plt.legend(loc = 'upper right' , fontsize = fnt_size -2 , ncol = 2)
 
 plt.grid(color = 'lightgray' , linestyle = ':')
-plt.xlabel(r'$m_{\tilde \chi _2 ^{0}}   - m_{\tilde \chi _1 ^{0}}   $   [GeV]', fontsize = fnt_size)
 plt.ylabel(r'$m_{\tilde \chi _1 ^{\pm}} - m_{\tilde \chi _1 ^{0}}   $   [GeV]', fontsize = fnt_size)
+plt.xlabel(r'$m_{\tilde \chi _2 ^{0}}   - m_{\tilde \chi _1 ^{0}}   $   [GeV]', fontsize = fnt_size)
 
 plt.axis([0,700,0,700])
 #plt.label('Mass [GeV]', fontsize = fnt_size)

@@ -44,7 +44,7 @@
 
 \section{Introduction}
 
-Thsi document summarizes the current status of the project. In addition, the results from a previous (unpublished) work are shown, since they are directly correlated and the current production of the Efficiency Maps (EM) is indeed based on those. 
+This document summarizes the current status of the project. In addition, the results from a previous (unpublished) work are shown, since they are directly correlated and the current production of the Efficiency Maps (EM) is indeed based on those. 
 
 
 
@@ -113,7 +113,7 @@ Fig. \ref{fastlim} shows the points excluded by the analysis ATLAS-CONF-2013-047
 	{ \includegraphics[width=0.49\textwidth]{Fig/FastLim/BinoTxNames_Scatter_2ndBest_All_LightS_All.png}}
 	\subfigure
 	{\includegraphics[width=0.49\textwidth]{Fig/FastLim/HiggsinoTxNames_Scatter_2ndBest_All_LightS_All.png}}
-	\caption{Points excluded by \FastLim~ ATLAS-CONF-2013-047 results, with the color code indicating the topologies leading the best and 2nd-best r-value. Note that the points might be excluded by combination of different simplified models results, i.e. considering only one result might not be enough to get r-value$>$1. The number in the legend reports the total number of points considered for the particular simplified model. }
+	\caption{Points excluded by \FastLim~ ATLAS-CONF-2013-047 results, with the colour code indicating the topologies leading the best and 2nd-best r-value. Note that the points might be excluded by combination of different simplified models results, i.e. considering only one result might not be enough to get r-value$>$1. The number in the legend reports the total number of points considered for the particular simplified model. }
 	\label{fastlim}
 	
 	
@@ -122,8 +122,20 @@ Fig. \ref{fastlim} shows the points excluded by the analysis ATLAS-CONF-2013-047
 
 \\
 
-Conclusion: if I want to extend the results for the ATLAS-SUSY-2013-02 with new EMs results, aimign at combining as many signals as possible, it makes sense to start from this simplified models, since they carry the highest constraining power. 
+Conclusion: if I want to extend the results for the ATLAS-SUSY-2013-02 with new EMs results, aiming at combining as many signals as possible, it makes sense to start from this simplified models, since they carry the highest constraining power. 
 
+\subsection{To Clarify}
+I am not sure about the meaning of these entries in the results root file:
+\begin{itemize}
+	\item ("SModelSCalculator\_UnusedModel\_0\_Weight")
+	\item ("SModelSCalculator\_UnusedModel\_0\_Bracket") 
+	\item ("SModelSCalculator\_UnusedModel\_0\_TxName") 
+	\item ("SModelSCalculator\_UnusedModel\_0\_FractionOutsideGrid") 
+	\item ("SModelSCalculator\_ConstraintOutsideGrid\_0\_Weight") 
+	\item ("SModelSCalculator\_ConstraintOutsideGrid\_0\_Bracket") 
+	\item ("SModelSCalculator\_ConstraintOutsideGrid\_0\_Bracket") 
+	\item ("SModelSCalculator\_MissingConstraint\_0\_Weight") 
+\end{itemize}
 
 \clearpage
 \section{New results: T3GQ Maps}
@@ -257,7 +269,7 @@ T3GQ & - \\
 T1qqqq (Off.) & - \\
 T1bbbb & - \\
 T1btbt & - \\
-
+T1bbqq (almost finished) & - \\
 T3GGgbb & - \\
 T3GGgqq & - \\
 T5(qqqq) & - \\
@@ -273,12 +285,22 @@ TChiW & -
 \end{table*}
 
 Using the information from Section \ref{ATLAS047}, the most useful EMs to be produced for the analysis ATLAS-SUSY-2013-02 should be:
+\\
+for the Bino-like LSP case
 \begin{itemize}
-	\item T1bbqq (almost finished) \
+	\item T1qqtt  \
+	\item T1tttt  \
+	\item T1bbtt  \
+\end{itemize}
+\\
+and for the Higgsino-like LSP case
+\begin{itemize}
+	\item \
 	\item T1bbbt \
+	\item T1bttt \
 	\item T1btqq \
 	\item T1bttt \
-	\item T3GGbtq (aka TGQbtq) \
+	\item T3GGgbt (aka TGQbtq) \
 	\item T5bbbt \
 	\item T5btbt \
 \end{itemize}
