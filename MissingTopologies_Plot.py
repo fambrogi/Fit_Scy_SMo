@@ -9,7 +9,6 @@ import os,sys
 import matplotlib
 matplotlib.use('Agg')
 from matplotlib  import cm
-from itertools import izip
 from matplotlib import ticker
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
@@ -19,7 +18,7 @@ from Extract_Info_Plotting import *
 #
 #
 #
-# Extracting Results
+#Extracting Results
 
 min_r = 0
 max_r = 1
@@ -34,9 +33,9 @@ NEU,SLEP,NEU2,CH1,GLU,SQ,R,XI2,MISS_TOPO_BRA,MISS_TOPO_TX,MISS_TOPO_W, MISS_CON_
 Set_Miss_Topo_Tx = list(set(MISS_TOPO_TX))
 Set_Miss_Con_Bra = list(set(MISS_CON_BRA))
 
-print 'Complete set of Missing TxNames'  , Set_Miss_Topo_Tx
-print 'Complete set of Missing Brackets' , Set_Miss_Con_Bra
-raw_input('Continue')
+print ('Complete set of Missing TxNames'  , Set_Miss_Topo_Tx)
+print ('Complete set of Missing Brackets' , Set_Miss_Con_Bra)
+#input('Continue')
 
 Dic_Tx , Dic_Bra = {} , {}
 for N in Set_Miss_Topo_Tx:
@@ -50,15 +49,15 @@ for N in Set_Miss_Con_Bra:
 sorted_Dic_Tx  = sorted(Dic_Tx.items()   , key=lambda x: x[1])
 sorted_Dic_Bra = sorted(Dic_Bra.items()  , key=lambda x: x[1])
 
-print 'Sorted TxNames entries: **** \n'
+print('Sorted TxNames entries: **** \n')
 for i in sorted_Dic_Tx:
-    print i
+    print(i)
 
-print 'Sorted Brackets entries: **** \n'
+print('Sorted Brackets entries: **** \n')
 for i in sorted_Dic_Bra:
-    print i
+    print(i)
 
-raw_input('Continue')
+#input('Continue')
 
 # This must be improved
 def Plane_Prop(plane):
@@ -96,7 +95,7 @@ def Plane_Prop(plane):
 
 
     if    plane == 'Slep_Neu':
-       return Slep_Neu
+        return Slep_Neu
     elif  plane == 'Ch1_Neu':
         return Ch1_Neu
     elif  plane == 'Glu_Neu':
@@ -126,13 +125,13 @@ def Select_Missing_Tx( Slep, Neu, Neu2, Ch1, Glu, Sq, Weight, TxName='', TxList 
     SLEP, GLU, NEU, SQ, CH1, NEU2, W = [],[],[],[],[],[],[]
     for num in range(len(Neu)):
         if TxList[num] == TxName:
-           SLEP.append(Slep[num])
-           GLU .append(Glu[num])
-           NEU .append(abs(Neu[num]))
-           SQ  .append(Sq[num])
-           CH1 .append(Ch1[num])
-           NEU2.append(abs(Neu2[num]))
-           W  .append(Weight[num])
+            SLEP.append(Slep[num])
+            GLU .append(Glu[num])
+            NEU .append(abs(Neu[num]))
+            SQ  .append(Sq[num])
+            CH1 .append(Ch1[num])
+            NEU2.append(abs(Neu2[num]))
+            W  .append(Weight[num])
     return SLEP, GLU, NEU, NEU2, SQ, CH1, W
 
 TxNames = ['TChiChipm_Woff_', 'TChiChipmZoff_Woff_','TSnuSnu__','TChiChipm_W_', 'TChiChi__','TChiChipme__']
@@ -148,10 +147,10 @@ VMAX = 5
 
 MissCon = ['[[],[[jet,jet]]]', '[[],[[l]]]'] # most interesting missing contraints TGN and TChiSlep
 
-
+MissCon = ['[[],[[l]]]']
 """ Weights of each best Missing Topology """
-os.system('mkdir Plots')
-os.system('mkdir Plots/Missing_Weights')
+os.system('mkdir PLOTS')
+os.system('mkdir PLOTS/Missing_Weights')
 
 
 '''
@@ -196,9 +195,9 @@ for tt in MissCon:
     T = tt
     Slep, Glu, Neu, Neu2, Sq,Ch1, W = Select_Missing_Tx( SLEP, NEU, NEU2, CH1, GLU, SQ, MISS_TOPO_W, TxName = T , TxList = MISS_CON_BRA ,)
     if len(Neu) ==0:
-        print ' *** The Missing Constraint ', T , ' has no points satisfying the selection requirements!'
+        print (' *** The Missing Constraint ', T , ' has no points satisfying the selection requirements!')
         continue
-    else:  print '*** The Missing Constraint ' , T, '  will be analysed ! ****'
+    else:  print ('*** The Missing Constraint ' , T, '  will be analysed ! ****')
     for P in Planes:
         NEU, NEU2, GLU, SQ, CH1, SLEP = Neu, Neu2, Glu, Sq, Ch1, Slep
         Dic_Prop = Plane_Prop(P)
@@ -212,13 +211,14 @@ for tt in MissCon:
         plt.scatter(-100,-100, color = 'gray', label = leg_lab )
 
         #print Dic_Prop['X'], Dic_Prop['Y'], W
+        print('W is', W)
         plt.scatter(Dic_Prop['X'], Dic_Prop['Y'], c =W , marker = 'o', s = Marker_Size ,  cmap = cm.jet,edgecolors='none' , vmin=1, vmax = 5 )
         Color_Bar(plt , size = FONTSIZE , bins = BINS , title = Weight )
 
         plt.legend(loc ='upper right', fontsize = FONTSIZE-9, fancybox = True)
         T = T.replace(',','')
-        os.system('mkdir Plots/Missing_Weights/' + T )
-        plt.savefig('Plots/Missing_Weights/'+ T + '/' + pref + '_' + P + '_Weight_'+ T +'.pdf', bbox_inches='tight')                                                      
+        os.system('mkdir PLOTS/Missing_Weights/' + T )
+        plt.savefig('PLOTS/Missing_Weights/'+ T + '/' + pref + '_' + P + '_Weight_'+ T +'.pdf', bbox_inches='tight')                                                      
 
         #plt.savefig('/afs/hephy.at/user/f/fambrogi/www/Fittino/Missing_Weights_Constraints/' + pref + '_' + P + '_Weight_'+ T +'.pdf', bbox_inches='tight')
         plt.close()
