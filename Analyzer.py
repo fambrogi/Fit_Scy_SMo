@@ -92,20 +92,20 @@ for P in range(Num_Points):
     # Unused Models ***************************
     Unused_Tx  = str(c.SModelSCalculator_UnusedModel_0_TxName)
     Unused_Bra = str(c.SModelSCalculator_UnusedModel_0_Bracket)
-    Unused_W     = c.GetLeaf('SModelSCalculator_UnusedModel_0_Bracket').GetValue()
-    Unused_W_1   = c.GetLeaf('SModelSCalculator_UnusedModel_1_Bracket').GetValue()
-    Unused_W_2   = c.GetLeaf('SModelSCalculator_UnusedModel_2_Bracket').GetValue()
+    Unused_W     = c.GetLeaf('SModelSCalculator_UnusedModel_0_Weight').GetValue()
+    Unused_W_1   = c.GetLeaf('SModelSCalculator_UnusedModel_1_Weight').GetValue()
+    Unused_W_2   = c.GetLeaf('SModelSCalculator_UnusedModel_2_Weight').GetValue()
 
     # Our grid ********************************
     Out_grid    = str(c.SModelSCalculator_ConstraintOutsideGrid_0_Bracket)
     Out_grid_W  = c.GetLeaf('SModelSCalculator_ConstraintOutsideGrid_0_Weight').GetValue()  
       
 
-    if ScyChi2 > 80 and rValue < 1:
-        print('Miss Con: bra, w1, w2, w3',  Miss_Con_Bra, Miss_Con_W, Miss_Con_W_1 , Miss_Con_W_2 )
-        print('Unused models tx, brax, w , w1', Unused_Tx , Unused_Bra, Unused_W, Unused_W_1 )
-        print('Outside grid:', Out_grid , ' ' , Out_grid_W)
-        raw_input('check!')
+ #   if ScyChi2 > 80 and rValue < 1:
+ #       print('Miss Con: bra, w1, w2, w3',  Miss_Con_Bra, Miss_Con_W, Miss_Con_W_1 , Miss_Con_W_2 #)
+ #        print('Unused models tx, brax, w , w1', Unused_Tx , Unused_Bra, Unused_W, Unused_W_1 )
+ #        print('Outside grid:', Out_grid , ' ' , Out_grid_W)
+ #        raw_input('check!')
 
     '''
     print glu, Neu1, Neu2 , EL 
