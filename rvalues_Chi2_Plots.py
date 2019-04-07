@@ -134,15 +134,15 @@ Plane_Prop = {  'Max_Neu' : Max_Neu , 'planes': {
                
                
                
-def Color_Bar(plt , size = '' , bins = '' , title = '' ):
-    cbar = plt.colorbar() 
+def Color_Bar(plt , size = '' , bins = '' , title = '' , vmin = '', vmax = ''):
+    cbar = plt.colorbar(bins = bins, ticks=range(10),  vmin=vmin, vmax = vmx ) 
     cbar.set_label( title , rotation = 90, fontsize = size)
     tick_locator = ticker.MaxNLocator(nbins=bins)
     cbar.locator = tick_locator
     cbar.update_ticks()
 
 def Plot_Properties(Dic_Prop):
-    plt.xlabel(Dic_Prop['xlab'] , fontsize = FONTSIZE)                                                                                                                      
+    plt.xlabel(Dic_Prop['xlab'],fontsize  =FONTSIZE)                     
     plt.ylabel(Dic_Prop['ylab'] , fontsize = FONTSIZE) 
     plt.grid(color = 'lightgray' , linestyle = ':')
     plt.axis([ Dic_Prop['xmin'], Dic_Prop['xmax'], Dic_Prop['ymin'] , Dic_Prop['ymax'] ])  
@@ -176,11 +176,11 @@ TxNames = ['TChiChipm_Woff_', 'TChiChipmZoff_Woff_','TSnuSnu__','TChiChipm_W_', 
 Planes = Plane_Prop['planes'].keys()
 
 Marker_Size = 10
-BINS = 5
+BINS = 10
 FONTSIZE = 20
 REV = False
-VMAX = 5
-
+VMAX = 10
+vmin = 0
 
 #MissCon = ['[[],[[jet,jet]]]', '[[],[[l]]]'] # most interesting missing contraints TGN and TChiSlep
 
@@ -222,9 +222,10 @@ for T in TxNames:
         #plt.scatter(-100,-100, color = 'gray', label = leg_lab )                                                                                        
 
         #print Dic_Prop['X'], Dic_Prop['Y'], W
-        plt.scatter( res[Plane_Prop['planes'][P]['X']],   res[Plane_Prop['planes'][P]['Y']],  c = res['W'] , marker = 'o', s = Marker_Size ,  cmap = cm.jet,edgecolors='none' , vmin=1, vmax = 5 )
-        Color_Bar(plt , size = FONTSIZE , bins = BINS , title = Weight )
+        plt.scatter( res[Plane_Prop['planes'][P]['X']],   res[Plane_Prop['planes'][P]['Y']],  c = res['W'] , marker = 'o', s = Marker_Size ,  cmap = cm.jet,edgecolors='none', vmin = vmin, vmax = VMAX )
 
+        Color_Bar(plt , size = FONTSIZE , bins = BINS , title = Weight , vmin = vmin, vmax = VMAX  )
+        cbar = plt.colorbar(bins = bins, ticks=range(10),  vmin=vmin, vmax = vmx ) 
         plt.legend(loc ='upper right', fontsize = FONTSIZE-9, fancybox = True)
 
         os.system('mkdir Plots/Missing_Weights/' + T )

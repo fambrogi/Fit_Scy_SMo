@@ -37,17 +37,20 @@ SL = dic['Slep']
 keys = dic.keys()
 
 diff_N2_N1 = []
-for n1,n2 in zip(N1,N2):
+diff_C_N1  = []
+diff_C_N2  = []
+diff_N2_C = []
+
+for c,n1,n2 in zip(C,N1,N2):
     diff_N2_N1.append(abs(n2)-abs(n1))
-    
-diff_C_N1 = []
-for c,n in zip(C,N1):
     diff_C_N1.append(c-n1)    
-
-diff_C_N2 = []
-for c,n2 in zip(C,N2):
-    diff_C_N2.append( abs(n2)-abs(c) )
-
+    diff_C_N2.append( abs(c)-abs(n2) )
+    diff_N2_C.append( abs(n2)-abs(c) )
+'''
+for a,b,c in zip(diff_N2_N1,diff_C_N1,diff_C_N2):
+    print a,b,c
+    raw_input('')
+'''
 
 bins = 50
 fnt_size = 13
@@ -94,20 +97,48 @@ plt.close()
 # Differences
 
 
-z,x,y  = List_Sorter(diff_C_N2, diff_N2_N1 , diff_C_N1, order=False)
+z,x,y  = List_Sorter(diff_N2_C, N1 , N2, order=False)
 
 
-plt.scatter( x, y, c = z , cmap = 'jet' , s = 6)
+plt.scatter( x, y, c = z , cmap = 'viridis' , s = 6 , vmin = -100, vmax = 300)
 cbar = plt.colorbar()
-cbar.set_label(r'$m_{\tilde \chi _2 ^{0}}   - m_{\tilde \chi _1 ^{\pm}}   $   [GeV]', size = fnt_size)
+cbar.set_label(r'$m_{\tilde \chi _2^{0}}   - m_{\tilde \chi _1 ^{\pm}}   $   [GeV]', size = fnt_size)
 
 #plt.legend(loc = 'upper right' , fontsize = fnt_size -2 , ncol = 2)
 
 plt.grid(color = 'lightgray' , linestyle = ':')
-plt.ylabel(r'$m_{\tilde \chi _1 ^{\pm}} - m_{\tilde \chi _1 ^{0}}   $   [GeV]', fontsize = fnt_size)
-plt.xlabel(r'$m_{\tilde \chi _2 ^{0}}   - m_{\tilde \chi _1 ^{0}}   $   [GeV]', fontsize = fnt_size)
+plt.xlabel(r'$ m_{\tilde \chi _1 ^{0}}   $ [GeV]', fontsize = fnt_size)
+plt.ylabel(r'$ m_{\tilde \chi _2 ^{0}}    $ [GeV]', fontsize = fnt_size)
+
+plt.axis([0,400,0,700])
+#plt.label('Mass [GeV]', fontsize = fnt_size)
+plt.savefig('PLOTS/Masses/Diff_N2_N1_C_EW.png' , bbox_inches='tight' , dpi = 200)
+plt.close()
+
+
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+z,x,y  = List_Sorter(diff_C_N1, N1 , C, order=False)
+
+
+plt.scatter( x, y, c = z , cmap = 'jet' , s = 6)
+cbar = plt.colorbar()
+cbar.set_label(r'$m_{\tilde \chi _1 ^{\pm}}  - m_{\tilde \chi _1 ^{0}} $ [GeV]', size = fnt_size)
+
+#plt.legend(loc = 'upper right' , fontsize = fnt_size -2 , ncol = 2)
+
+plt.grid(color = 'lightgray' , linestyle = ':')
+plt.xlabel(r'$m_{\tilde \chi _1 ^{0}  }  $ [GeV]', fontsize = fnt_size)
+plt.ylabel(r'$m_{\tilde \chi _1 ^{\pm}}  $ [GeV]', fontsize = fnt_size)
 
 plt.axis([0,700,0,700])
 #plt.label('Mass [GeV]', fontsize = fnt_size)
-plt.savefig('PLOTS/Masses/Diff_EW.png' , bbox_inches='tight' , dpi = 200)
+plt.savefig('PLOTS/Masses/Diff_C_N1_EW.png' , bbox_inches='tight' , dpi = 200)
 plt.close()
+
+
+
+
+
+
+
+

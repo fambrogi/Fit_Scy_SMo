@@ -122,11 +122,11 @@ Plane_Prop = {  'Max_Neu' : Max_Neu , 'planes': {
                             'x_lab_pos': 30, 'y_lab_pos': 340 ,
                             'xlab': Neu2_M , 'ylab': Neu_M  } ,
                
-               'DiffN2N1_Neu' : {'X': 'NEU', 'Y': 'DIFFN2N1' ,
+               'DiffN2N1_Neu' : {'X': 'NEU2', 'Y': 'DIFFN2N1' ,
                             'xmin': 0 ,'xmax': 700 ,
                             'ymin': 0 ,'ymax': 600 ,
-                            'x_lab_pos': 30, 'y_lab_pos': 650 ,
-                            'xlab': Neu_M , 'ylab': DiffN2N1_M  } ,
+                            'x_lab_pos': 30, 'y_lab_pos': 530 ,
+                            'xlab': Neu2_M , 'ylab': DiffN2N1_M  } ,
 
                'DiffN2N1_Neu_Zoom' : {'X': 'NEU', 'Y': 'DIFFN2N1' ,
                             'xmin': 0 ,'xmax': 700 ,
@@ -143,7 +143,7 @@ Plane_Prop = {  'Max_Neu' : Max_Neu , 'planes': {
                
                
                
-def Color_Bar(plt , size = '' , bins = '' , title = '' ):
+def Color_Bar(plt , size = '' , bins = '' , title = '' , vmin = '', vmax = ''):
     cbar = plt.colorbar() 
     cbar.set_label( title , rotation = 90, fontsize = size)
     tick_locator = ticker.MaxNLocator(nbins=bins)
@@ -182,13 +182,15 @@ def Select_Missing_Tx( Slep, Neu, Neu2, Ch1, Glu, Sq, DiffN2N1, Weight, Chi2, Tx
 
 TxNames = ['TChiChipm_Woff_', 'TChiChipmZoff_Woff_','TSnuSnu__','TChiChipm_W_', 'TChiChi__','TChiChipme__']
 
+TxNames = ['TChiChipmmu__']
 Planes = Plane_Prop['planes'].keys()
 
 Marker_Size = 10
-BINS = 5
+BINS = 10
 FONTSIZE = 20
 REV = False
-VMAX = 5
+vmin = 0
+VMAX = 10
 
 
 #MissCon = ['[[],[[jet,jet]]]', '[[],[[l]]]'] # most interesting missing contraints TGN and TChiSlep
@@ -238,9 +240,8 @@ for T in TxNames:
                            
 
         #print Dic_Prop['X'], Dic_Prop['Y'], W
-        plt.scatter( res[Plane_Prop['planes'][P]['X']],   res[Plane_Prop['planes'][P]['Y']],  c = res['W'] , marker = 'o', s = Marker_Size ,  cmap = cm.jet,edgecolors='none' , vmin=1, vmax = 5 )
-        Color_Bar(plt , size = FONTSIZE , bins = BINS , title = Weight )
-
+        plt.scatter( res[Plane_Prop['planes'][P]['X']],   res[Plane_Prop['planes'][P]['Y']],  c = res['W'] , marker = 'o', s = Marker_Size ,  cmap = cm.jet,edgecolors='none' , vmin=vmin, vmax = VMAX )
+        Color_Bar(plt , size = FONTSIZE  , title = Weight , bins = BINS )
         plt.legend(loc ='upper right', fontsize = FONTSIZE-9, fancybox = True)
 
         plt.axes(ax2)
