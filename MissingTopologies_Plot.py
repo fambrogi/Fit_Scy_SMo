@@ -24,14 +24,29 @@ min_r = 0
 max_r = 1
 min_Chi2 = 40
 
-NEU,SLEP,NEU2,CH1,GLU,SQ,R,XI2,MISS_TOPO_BRA,MISS_TOPO_TX,MISS_TOPO_W, MISS_CON_BRA, MISS_CON_W, dic = Select_Results(min_r = min_r , max_r = max_r, min_xi= min_Chi2, max_xi= 10000)
+
+''' Content of the dicitonary from the function below ::: 
+dic = {'Neu'         : NEU  , 
+       'Neu2'        : NEU2 , 
+       'Slep'        : SLEP , 
+       'Chi1'        : CH1  , 
+       'rValue'      : R    , 
+       'chi2'        : XI2  ,
+       'MissTopoBra' : MISS_TOPO_BRA ,
+       'MissTopoTx'  : MISS_TOPO_TX  ,
+       'MissTopoW'   : MISS_TOPO_W   ,
+       'MissConBra'  : MISS_CON_BRA  ,
+       'MissConW'    : MISS_CON_W }
+'''
+
+dic = Select_Results(min_r = min_r , max_r = max_r, min_xi= min_Chi2, max_xi= 10000)
 
 
 """ Counting Missing topo """
 #print  MISS_TOPO_BRA, MISS_TOPO_TX, MISS_CON_BRA
 #raw_input('check lists')
-Set_Miss_Topo_Tx = list(set(MISS_TOPO_TX))
-Set_Miss_Con_Bra = list(set(MISS_CON_BRA))
+Set_Miss_Topo_Tx = list(set(dic['MissTopoTx']))
+Set_Miss_Con_Bra = list(set(dic['MissConBra']))
 
 print ('Complete set of Missing TxNames'  , Set_Miss_Topo_Tx)
 print ('Complete set of Missing Brackets' , Set_Miss_Con_Bra)

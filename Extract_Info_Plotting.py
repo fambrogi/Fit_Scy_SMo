@@ -25,6 +25,10 @@ Slep_M    = r'$m_{\tilde l }$ [GeV]'
 rValue    = r'SModelS $r =\frac{\sigma_{Theo}}{\sigma_{UL}}$'
 ScyXi2    = r'ScyNet $\chi ^2$'
 
+
+DiffN2N1_M = r'$m_{\tilde{\chi}_2 ^0} - m_{\tilde{\chi}_1 ^0}   $ [GeV]'
+
+
 Weight = r'$ w = \sigma \times BR \ [fb] $'
  
 
@@ -71,7 +75,7 @@ def Select_Results(results = 'Numpys/ScyNet_Res.npy', min_r='', max_r = '', min_
             GLU.append(Glu[num])
             SQ.append(Sq[num])
             CH1.append(Ch1[num])
-            NEU2.append(Neu[num])
+            NEU2.append(Neu2[num])
             XI2.append(xi2[num])
             MISS_TOPO_BRA.append(Miss_Topo_Bra[num])
             MISS_TOPO_TX .append(Miss_Topo_Tx[num])
@@ -79,28 +83,30 @@ def Select_Results(results = 'Numpys/ScyNet_Res.npy', min_r='', max_r = '', min_
             MISS_TOPO_W  .append(Miss_Topo_W[num])
             MISS_CON_W   .append(Miss_Con_W[num])
             
-            if (Miss_Con_W[num]  > 5 or Miss_Topo_W[num] > 5):
-                print('bracket, weight', Miss_Con_Bra[num] , Miss_Con_W[num] )
-                
-                print('topo, weight', Miss_Topo_Tx[num] , Miss_Topo_W[num] )
-                input('')
+#            if (Miss_Con_W[num]  > 5 or Miss_Topo_W[num] > 5):
+#                print('bracket, weight', Miss_Con_Bra[num] , Miss_Con_W[num] )
+#                
+#                print('topo, weight', Miss_Topo_Tx[num] , Miss_Topo_W[num] )
+#                input('')
             
             
     dic = {'Neu'         : NEU  , 
            'Neu2'        : NEU2 , 
            'Slep'        : SLEP , 
-           'Chi1'        : CH1  , 
-           'rValue'      : R , 
-           'chi2'        : XI2 ,
+           'Sq'          : SQ,
+           'Glu'         : GLU, 
+           'Ch1'         : CH1  , 
+           'rValue'      : R    , 
+           'chi2'        : XI2  ,
            'MissTopoBra' : MISS_TOPO_BRA ,
            'MissTopoTx'  : MISS_TOPO_TX  ,
            'MissTopoW'   : MISS_TOPO_W   ,
            'MissConBra'  : MISS_CON_BRA  ,
-           'MissConBra'  : MISS_CON_W }
+           'MissConW'  : MISS_CON_W }
 
-    return NEU,SLEP,NEU2,CH1,GLU,SQ,     R,XI2,  MISS_TOPO_BRA,MISS_TOPO_TX,MISS_TOPO_W, MISS_CON_BRA, MISS_CON_W , dic 
-
-
+    return dic 
 
 
-NEU,SLEP,NEU2,CH1,GLU,SQ,     R,XI2,  MISS_TOPO_BRA,MISS_TOPO_TX,MISS_TOPO_W, MISS_CON_BRA, MISS_CON_W , dic  = Select_Results(results = 'Numpys/ScyNet_Res.npy', min_r=0, max_r = 10, min_xi = 20, max_xi = 1000, debug = True)
+
+
+#dic  = Select_Results(results = 'Numpys/ScyNet_Res.npy', min_r=0, max_r = 10, min_xi = 20, max_xi = 1000, debug = True)
