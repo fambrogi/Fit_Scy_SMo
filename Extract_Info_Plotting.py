@@ -59,10 +59,12 @@ def Select_Results(results = 'Numpys/ScyNet_Res.npy', min_r='', max_r = '', min_
     xi2  = RESULTS['ScyChi2']
     Miss_Topo_Tx , Miss_Topo_Bra , Miss_Con_Bra = RESULTS['Miss_Topo_Tx'], RESULTS['Miss_Topo_Bra'], RESULTS['Miss_Con_Bra']
     Miss_Topo_W , Miss_Con_W = RESULTS['Miss_Topo_W'] , RESULTS['Miss_Con_W']
-
+    Out_grid, Out_grid_W = RESULTS['Out_grid'] , RESULTS['Out_grid_W']
+    
     NEU,SLEP,NEU2,CH1,GLU,SQ,R,XI2 = [],[],[],[],[],[],[],[]
     MISS_TOPO_BRA , MISS_TOPO_TX , MISS_CON_BRA , MISS_TOPO_W, MISS_CON_W = [],[],[], [],[]
-
+    OUT_GRID, OUT_GRID_W = [] , []
+    
     for num in range(len(Neu)):
 
         r = rVal[num]
@@ -82,6 +84,9 @@ def Select_Results(results = 'Numpys/ScyNet_Res.npy', min_r='', max_r = '', min_
             MISS_CON_BRA .append(Miss_Con_Bra[num])
             MISS_TOPO_W  .append(Miss_Topo_W[num])
             MISS_CON_W   .append(Miss_Con_W[num])
+            OUT_GRID     .append(Out_grid[num])
+            OUT_GRID_W   .append(Out_grid_W[num])
+            
             
 #            if (Miss_Con_W[num]  > 5 or Miss_Topo_W[num] > 5):
 #                print('bracket, weight', Miss_Con_Bra[num] , Miss_Con_W[num] )
@@ -102,7 +107,12 @@ def Select_Results(results = 'Numpys/ScyNet_Res.npy', min_r='', max_r = '', min_
            'MissTopoTx'  : MISS_TOPO_TX  ,
            'MissTopoW'   : MISS_TOPO_W   ,
            'MissConBra'  : MISS_CON_BRA  ,
-           'MissConW'  : MISS_CON_W }
+           'MissConW'  : MISS_CON_W  ,
+           'OutGrid'  : OUT_GRID  ,
+           'OutGridW'  : OUT_GRID_W  ,
+           
+           
+           }
 
     return dic 
 

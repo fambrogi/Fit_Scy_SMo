@@ -171,7 +171,11 @@ def Select_Missing_Tx( Slep, Neu, Neu2, Ch1, Glu, Sq, DiffN2N1, Weight, , Chi2, 
     
     return d 
 
-TxNames = ['TChiChipm_Woff_', 'TChiChipmZoff_Woff_','TSnuSnu__','TChiChipm_W_', 'TChiChi__','TChiChipme__']
+TxNames = ['TChiChipm_Woff_', 'TChiChipmZoff_Woff_', 'TSnuSnu__', 'TChiChipm_W_', 'TChiChi__','TChiChipme__']
+
+
+TxNames = ['TChiChipme__' , 'TChiChi__', 'TChiChipm_W_', 'TSnuSnu__', 'TChiChipmZoff_Woff_' , 'TChiChipm_Woff_' ]
+
 
 Planes = Plane_Prop['planes'].keys()
 

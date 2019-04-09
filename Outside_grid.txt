@@ -1,0 +1,27 @@
+i, frequency [[[l],[l]],[[l],[nu]]] 5476
+ i, frequency [[[l],[nu]],[[nu],[l]]] 136
+ i, frequency [[[W]],[[higgs]]] 1727
+ i, frequency [[[l],[l]],[[ta],[nu]]] 256
+ i, frequency [[[W]],[[W]]] 72
+ i, frequency [[[ta],[nu]],[[ta],[ta]]] 57
+ i, frequency [[[jet]],[[jet]]] 6645
+ i, frequency [[[W]],[[Z]]] 127
+ i, frequency [[[l,l]],[[l,nu]]] 1754
+ i, frequency [[[l],[nu]],[[ta],[nu]]] 36
+ i, frequency [[[Z]],[[Z]]] 10
+ i, frequency [[[b,b]],[[jet,jet]]] 1356
+ i, frequency [[[l],[l]],[[nu],[ta]]] 15
+ i, frequency [[[nu],[l]],[[nu],[ta]]] 9
+ i, frequency [[[nu],[ta]],[[ta],[ta]]] 21
+ i, frequency [[[l]],[[l]]] 48
+ i, frequency [[[l],[nu]],[[l],[nu]]] 21
+ i, frequency [[[nu],[l]],[[ta],[nu]]] 4
+ i, frequency [[[l],[l]],[[nu],[l]]] 643
+ i, frequency [[[l],[nu]],[[nu],[ta]]] 45
+ i, frequency [[[nu],[l]],[[ta],[l]]] 3
+ i, frequency [[[jet],[W]],[[jet],[W]]] 155
+ i, frequency [[[l,nu]],[[l,nu]]] 1152
+ i, frequency [[[nu],[l]],[[ta],[ta]]] 40
+ i, frequency [[[jet,jet]],[[jet,jet]]] 2912
+ i, frequency [[[nu],[l]],[[nu],[l]]] 12
+ i, frequency [[[l],[nu]],[[ta],[ta]]] 611
