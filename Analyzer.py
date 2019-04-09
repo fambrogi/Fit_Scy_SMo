@@ -1,4 +1,4 @@
-"""
+B"""
     Module::  Analyzer.py
     Author::  Federico Ambrogi, federico.ambrogi@univie.ac.at
     Summary:: This script analyses the root file produced by Fittino-ScyNet
@@ -49,7 +49,8 @@ Dic = { 'Glu': []  , 'Neu1': [] , 'Neu2': [] , 'Ch1': [] , 'Slep': []  , 'Sq': [
         'Sb1': [] , 'St1': [],
         'ScyChi2': [] , 'rValue': [] , 
         'Miss_Topo_Tx': [] , 'Miss_Topo_Bra':[], 'Miss_Con_Bra':[] , 
-        'Miss_Topo_W':[], 'Miss_Con_W':[] }
+        'Miss_Topo_W':[], 'Miss_Con_W':[] ,
+        'Out_grid':[] , 'Out_grid_W':[]}
 
 
 for P in range(Num_Points):
@@ -76,12 +77,9 @@ for P in range(Num_Points):
 
 
     # SMo rvalues and ScyNet chi2
-
     rValue   = c.GetLeaf('SModelS_Measurement_Rvalue').GetValue()
     rValue_2 = c.GetLeaf('SModelSCalculator_RValue').GetValue()
     ScyChi2 = c.GetLeaf('SCYNet_Chi2_8TeV').GetValue()
-
-
     
     # Missing Constraints ************************
     Miss_Con_W    = c.GetLeaf('SModelSCalculator_MissingConstraint_0_Weight').GetValue()
@@ -100,7 +98,7 @@ for P in range(Num_Points):
     Out_grid    = str(c.SModelSCalculator_ConstraintOutsideGrid_0_Bracket)
     Out_grid_W  = c.GetLeaf('SModelSCalculator_ConstraintOutsideGrid_0_Weight').GetValue()  
       
-
+    #print ('Out grid contirbutions: ', Out_grid, Out_grid_W )
  #   if ScyChi2 > 80 and rValue < 1:
  #       print('Miss Con: bra, w1, w2, w3',  Miss_Con_Bra, Miss_Con_W, Miss_Con_W_1 , Miss_Con_W_2 #)
  #        print('Unused models tx, brax, w , w1', Unused_Tx , Unused_Bra, Unused_W, Unused_W_1 )
@@ -140,6 +138,9 @@ for P in range(Num_Points):
 
     Dic['rValue']       .append(rValue_2)
     Dic['ScyChi2']      .append(ScyChi2)
+
+    Dic['Out_grid']     .append(Out_grid)
+    Dic['Out_grid_W']   .append(Out_grid_W)
 
 
 np.save('ScyNet_Res', Dic)
