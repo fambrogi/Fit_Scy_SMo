@@ -97,7 +97,7 @@ for P in range(Num_Points):
     # Our grid ********************************
     Out_grid    = str(c.SModelSCalculator_ConstraintOutsideGrid_0_Bracket)
     Out_grid_W  = c.GetLeaf('SModelSCalculator_ConstraintOutsideGrid_0_Weight').GetValue()  
-      
+    
     #print ('Out grid contirbutions: ', Out_grid, Out_grid_W )
  #   if ScyChi2 > 80 and rValue < 1:
  #       print('Miss Con: bra, w1, w2, w3',  Miss_Con_Bra, Miss_Con_W, Miss_Con_W_1 , Miss_Con_W_2 #)
@@ -130,20 +130,22 @@ for P in range(Num_Points):
 
 #         'Miss_Topo_Tx': [] , 'Miss_Topo_Bra':[], 'Miss_Con_Bra':[] , }
 
-    #Dic['Miss_Topo_W']  .append(Miss_Topo_W)
-    #Dic['Miss_Con_W']   .append(Miss_Con_W)
-    #Dic['Miss_Topo_Tx'] .append(Miss_Topo_Tx)
-    #Dic['Miss_Topo_Bra'].append(Miss_Topo_Bra)
-    #Dic['Miss_Con_Bra'] .append(Miss_Con_Bra)
+    
+    Dic['Miss_Topo_W']  .append(Unused_W)
+    Dic['Miss_Topo_Tx'] .append(Unused_Tx)
+
+    Dic['Miss_Con_W']   .append(0)
+    Dic['Miss_Topo_Bra'].append(0)
+    Dic['Miss_Con_Bra'] .append(0)
 
     Dic['rValue']       .append(rValue_2)
     Dic['ScyChi2']      .append(ScyChi2)
 
     Dic['Out_grid']     .append(Out_grid)
     Dic['Out_grid_W']   .append(Out_grid_W)
+    
 
-
-np.save('ScyNet_Res', Dic)
+np.save('Numpys/ScyNet_Res', Dic)
 
 
 
