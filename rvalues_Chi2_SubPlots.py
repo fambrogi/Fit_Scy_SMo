@@ -48,14 +48,16 @@ MISS_TOPO_W , MISS_TOPO_TX ,CHI2 = dic['MissTopoW'] , dic['MissTopoTx'] , dic['c
 OUTSIDE , OUTSIDE_W = dic['OutGrid'] , dic['OutGridW']
 
 DIFFN2N1 = []
-for n1,n2 in zip (NEU, NEU2):
+DIFFGN1= []
+
+for n1,n2,g in zip (NEU, NEU2,GLU):
     DIFFN2N1.append(n2-n1)
- 
-print(DIFFN2N1) 
+    DIFFGN1.append(g-n1)
+
 # PLOTTING SECTION
 
 
-
+print(len(NEU), len(NEU2), len(GLU))
 
 fnt_size = 13
 histtype = 'stepfilled'
@@ -112,6 +114,12 @@ Plane_Prop = {  'Max_Neu' : Max_Neu , 'planes': {
                            'x_lab_pos': 2350 , 'y_lab_pos': 350 ,
                            'xlab': Glu_M , 'ylab': Neu_M } ,
 
+               'Glu_Sq' : { 'X':'GLU' , 'Y': 'SQ',
+                           'xmin': 2300 ,'xmax':3500 ,
+                           'ymin': 2300 ,'ymax': 3500 ,
+                           'x_lab_pos': 2350 , 'y_lab_pos': 3300 ,
+                           'xlab': Glu_M , 'ylab': Sq_M } ,
+               
                'Sq_Neu' : { 'X': 'SQ', 'Y': 'NEU' ,
                           'xmin': 2300 ,'xmax':3500 ,
                           'ymin': 0 ,'ymax': Max_Neu ,
@@ -136,7 +144,11 @@ Plane_Prop = {  'Max_Neu' : Max_Neu , 'planes': {
                             'x_lab_pos': 30, 'y_lab_pos': 43 ,
                             'xlab': Neu_M , 'ylab': DiffN2N1_M  } ,
 
-
+               'DiffGN1_Neu_Zoom' : {'X': 'GLU', 'Y': 'DIFFGN1' ,
+                            'xmin': 0 ,'xmax': 700 ,
+                            'ymin': 0 ,'ymax': 50 ,
+                            'x_lab_pos': 30, 'y_lab_pos': 43 ,
+                            'xlab': Glu_M , 'ylab': DiffGN1_M  } ,
 
                
                }
@@ -160,12 +172,12 @@ def Plot_Properties(Dic_Prop):
   
 
 
-def Select_Missing_Tx( Slep, Neu, Neu2, Ch1, Glu, Sq, DiffN2N1, Weight, Chi2, TxName='', TxList = ''):
+def Select_Missing_Tx( Slep, Neu, Neu2, Ch1, Glu, Sq, DiffN2N1, DiffGN1, Weight, Chi2, TxName='', TxList = ''):
     ''' Extracts the values of masses and rvalues/chi2 for the selected txName 
         txName is the wanted txname or constraint 
         Txlist is the array of best misisng txnames
     '''
-    SLEP, GLU, NEU, SQ, CH1, NEU2,  DIFFN2N1 , W , CHI2 = [],[],[],[],[],[],[], [] , []
+    SLEP, GLU, NEU, SQ, CH1, NEU2,  DIFFN2N1 ,DIFFGN1, W , CHI2 = [],[],[],[],[],[],[], [] , [], []
     for num in range(len(Neu)):
         if TxList[num] == TxName:
             SLEP.append(Slep[num])
@@ -175,10 +187,11 @@ def Select_Missing_Tx( Slep, Neu, Neu2, Ch1, Glu, Sq, DiffN2N1, Weight, Chi2, Tx
             CH1 .append(Ch1[num])
             NEU2.append(abs(Neu2[num]))
             DIFFN2N1.append(DiffN2N1[num])
+            DIFFGN1.append(DiffGN1[num])
             W  .append(Weight[num])
             CHI2.append(Chi2[num])
             
-    d = dict(SLEP = SLEP, GLU = GLU, NEU=NEU, NEU2=NEU2, SQ=SQ, CH1=CH1, W=W, DIFFN2N1 = DIFFN2N1, CHI2 = CHI2)       
+    d = dict(SLEP = SLEP, GLU = GLU, NEU=NEU, NEU2=NEU2, SQ=SQ, CH1=CH1, W=W, DIFFN2N1 = DIFFN2N1, CHI2 = CHI2 , DIFFGN1 = DIFFGN1)       
     
     return d 
 
@@ -256,18 +269,14 @@ for T in TxNames:
         plt.close()
 '''
 
-import collections
 
 
 
 Out = OUTSIDE
-
-
-
 for i in list(set(Out)):
     print(' i, frequency', i , Out.count(i))
     
-TxNames = ['TChiChipm_Woff_', 'TChiChipmZoff_Woff_','TSnuSnu__','TChiChipm_W_', 'TChiChi__','TChiChipme__']
+O = ['[[[jet]],[[jet]]]','[[[jet,jet]],[[jet,jet]]]' , '[[[l],[l]],[[l],[nu]]]' ]
 
 Planes = Plane_Prop['planes'].keys()
 
@@ -297,9 +306,9 @@ def sub_histo(chi2,fnt_size):
     
 
 pref = 'prova'
-for T in TxNames:
+for T in O:
     # Slep, Neu, Neu2, Ch1, Glu, Sq, DiffN2N1, Weight, TxName='', TxList = ''
-    res = Select_Missing_Tx( SLEP, NEU, NEU2, CH1, GLU, SQ, DIFFN2N1, MISS_TOPO_W, CHI2, TxName = T , TxList = MISS_TOPO_TX ,)
+    res = Select_Missing_Tx( SLEP, NEU, NEU2, CH1, GLU, SQ, DIFFN2N1, DIFFGN1, MISS_TOPO_W, CHI2, TxName = T , TxList = Out ,)
     
     if len(res['NEU']) ==0: 
         print (' The TxName ', T , ' has no points satisfying the selection requirements!')
@@ -316,7 +325,7 @@ for T in TxNames:
         Plot_Properties ( Plane_Prop['planes'][P] ) 
 
         sel_values = str(min_r) + r' $\leq $' + 'rValue' + r'$<$ ' + str(max_r)+ '\n' + 'ScyNet ' + r'$\chi ^2 \geq$ ' + str(min_Chi2)
- 
+        print('P is: ', P)
         plt.text(Plane_Prop['planes'][P]['x_lab_pos'], Plane_Prop['planes'][P]['y_lab_pos'], sel_values, fontsize = FONTSIZE-2, color = 'blue' )
 
         plt.title('TxName: '+ T.replace('_','').replace('__','') , fontsize = fnt_size+3 , color = 'dodgerblue' , y = 1.03 )
@@ -331,9 +340,10 @@ for T in TxNames:
         plt.axes(ax2)
         sub_histo(res['CHI2'], fnt_size-2)
         ax2.tick_params(axis = 'both', which = 'major', labelsize = fnt_size-1)
- 
-        os.system('mkdir Plots/Missing_Weights/' + T )
-        plt.savefig('Plots/Missing_Weights/'+ T + '/' + pref + '_' + P + '_Weight_'+ T +'.pdf', bbox_inches='tight')
+        T = T.replace(',','') 
+        os.system('mkdir Plots/Outside_Weights/' )        
+        os.system('mkdir Plots/Outside_Weights/' + T)
+        plt.savefig('Plots/Outside_Weights/'+ T + '/' + pref + '_' + P + '_Weight_'+ T +'.pdf', bbox_inches='tight')
         #plt.savefig('/afs/hephy.at/user/f/fambrogi/www/Fittino/Missing_Weights_TxName/' + pref + '_' + P + '_Weight_'+ T +'.pdf', bbox_inches='tight')           
         plt.close()
         

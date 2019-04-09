@@ -152,7 +152,7 @@ There are some things that I cannot explain, e.g.
 
 
 \section{Outside of the grid}
-
+List of constraints present in the \SMO~database which do not however cover the region in the mass parameter spaces of the tested points:
 \begin{verbatim}
   [[[jet]],[[jet]]] 6645
   [[[l],[l]],[[l],[nu]]] 5476
@@ -168,6 +168,20 @@ There are some things that I cannot explain, e.g.
   [[[l],[nu]],[[nu],[l]]] 136
   [[[W]],[[Z]]] 127
 \end{verbatim}
+Fig- \ref{outside} shows the distributions of the weights for the most frequent cases:
+\begin{figure}[!b]
+	\centering
+	\subfigure
+	{ \includegraphics[width=0.51\textwidth]{Fig/Res/Outside_Weights/2jet.pdf}}
+	\subfigure
+	{\includegraphics[width=0.51\textwidth]{Fig/Res/Outside_Weights/3lep.pdf}}
+	\subfigure
+	{\includegraphics[width=0.51\textwidth]{Fig/Res/Outside_Weights/4jet.pdf}}	
+
+	\caption{Weights $\sigma \times BR$ [fb] for the most frequent constraints falling outside of the grid}
+	\label{outside}
+\end{figure}
+
 
 
 
@@ -176,7 +190,7 @@ There are some things that I cannot explain, e.g.
 
 
 \section*{Acknowledgments}
-Thanks!
+Thanks
 %
 \bibliographystyle{JHEP}
 \bibliography{references}

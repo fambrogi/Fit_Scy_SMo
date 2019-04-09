@@ -27,6 +27,7 @@ ScyXi2    = r'ScyNet $\chi ^2$'
 
 
 DiffN2N1_M = r'$m_{\tilde{\chi}_2 ^0} - m_{\tilde{\chi}_1 ^0}   $ [GeV]'
+DiffGN1_M = r'$m_{\tilde g} - m_{\tilde{\chi}_1 ^0}   $ [GeV]'
 
 
 Weight = r'$ w = \sigma \times BR \ [fb] $'

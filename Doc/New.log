@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7000 64-bit) (preloaded format=xelatex 2019.3.25)  8 APR 2019 12:30
+This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7000 64-bit) (preloaded format=xelatex 2019.3.25)  9 APR 2019 14:50
 entering extended mode
 **./New.tex
 (New.tex
@@ -516,30 +516,68 @@ File: Fig/Res/Missing_Weights/TSnuSnu.pdf Graphic file (type pdf)
 [3
 
 ] [4]
+! Undefined control sequence.
+l.174 ^^I\subfigure
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+File: Fig/Res/Outside_Weights/2jet.pdf Graphic file (type pdf)
+<use Fig/Res/Outside_Weights/2jet.pdf>
+! Undefined control sequence.
+l.176 ^^I\subfigure
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+File: Fig/Res/Outside_Weights/3lep.pdf Graphic file (type pdf)
+<use Fig/Res/Outside_Weights/3lep.pdf>
+! Undefined control sequence.
+l.178 ^^I\subfigure
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+File: Fig/Res/Outside_Weights/4jet.pdf Graphic file (type pdf)
+<use Fig/Res/Outside_Weights/4jet.pdf>
+[5]
+
+LaTeX Warning: Text page 6 contains only floats.
+
+[6]
 No file New.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 169.
-[5
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 198.
+[7
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 169.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 198.
  (New.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 169.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 169.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 198.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 198.
 Package rerunfilecheck Info: File `New.out' has not changed.
-(rerunfilecheck)             Checksum: 8D6F82084E6D64EB732DCECCF1DA3D6F.
+(rerunfilecheck)             Checksum: 5F4A203C661A640B2B06E745531BBA4A.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 169.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 198.
  ) 
 Here is how much of TeX's memory you used:
- 9703 strings out of 427748
- 131137 string characters out of 3150980
- 210802 words of memory out of 3000000
- 13640 multiletter control sequences out of 15000+200000
+ 9717 strings out of 427748
+ 131569 string characters out of 3150980
+ 211068 words of memory out of 3000000
+ 13650 multiletter control sequences out of 15000+200000
  52249 words of font info for 58 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
- 39i,6n,30p,289b,333s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,7n,30p,289b,455s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on New.pdf (6 pages).
+Output written on New.pdf (8 pages).
